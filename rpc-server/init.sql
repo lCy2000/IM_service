@@ -1,7 +1,7 @@
--- CREATE USER 'root'@'Localhost' IDENTIFIED BY 'password';
--- GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
 
-CREATE USER 'root'@'%' IDENTIFIED BY 'password';
+CREATE USER 'test'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
 
 FLUSH PRIVILEGES;
