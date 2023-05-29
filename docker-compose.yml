@@ -1,0 +1,49 @@
+version: "3.9"
+services:
+  rpc-server:
+    image: rpc-server:latest
+    build: rpc-server
+    ports:
+      - "8888:8888"
+    environment:
+      - SERVICE_NAME=rpc-server
+      - SERVICE_TAGS=rpc
+    depends_on:
+      - etcd
+      - mysql
+  http-server:
+    image: http-server:latest
+    build: http-server
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVICE_NAME=http-server
+      - SERVICE_TAGS=http
+    depends_on:
+      - etcd
+      - rpc-server
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.0
+    command:
+      [
+        "etcd",
+        "--advertise-client-urls",
+        "http://etcd:2379",
+        "--listen-client-urls",
+        "http://0.0.0.0:2379",
+      ]
+    ports:
+      - "2379:2379"
+  mysql:
+    image: mysql:latest
+    container_name: IMDB
+    environment:
+      - MYSQL_DATABASE=im_service
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    ports:
+      - "3307:3306"
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./rpc-server/init.sql:/data/application/init.sql:ro

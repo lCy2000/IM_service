@@ -1,0 +1,43 @@
+.wrapperBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  .containerBox {
+    height: 800px;
+    width: 900px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+
+  .iconBox {
+    cursor: pointer;
+  }
+
+  > input {
+    width: 100%;
+    height: 35px;
+    padding: 0px 5px;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+  }
+}
