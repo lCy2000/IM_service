@@ -1,6 +1,6 @@
 # Fullstack IM_Service
 
-##To start:
+## To start:
 ### For the frontend:
   1. `cd im-service`
   2. `npm i`
