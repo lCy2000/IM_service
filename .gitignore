@@ -1,1 +1,6 @@
 data/
+rpc-server/script/bootstrap.sh
+rpc-server/output/bootstrap.sh
+rpc-server/Dockerfile
+rpc-server/build.sh
+.gitignore
